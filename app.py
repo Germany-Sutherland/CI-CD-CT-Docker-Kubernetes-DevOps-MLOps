@@ -291,3 +291,152 @@ st.write(
 
 st.markdown("---")
 st.caption("Demo by Amit — DevOps Pipeline Visualizer. All free & open source. Not a production CI/CD system; a portfolio demo for hiring interviews.")
+
+# -----------------------
+# USER GUIDE (Layman-friendly, colorful) - paste at the absolute bottom of app.py
+# -----------------------
+usage_html = """
+<style>
+/* container */
+.howto { 
+  background: linear-gradient(135deg,#fff7ed,#e8f7ff); 
+  padding: 22px; 
+  border-radius: 12px; 
+  box-shadow: 0 8px 30px rgba(20,30,50,0.08);
+  font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin-top: 28px;
+}
+
+/* title */
+.howto h2 { 
+  text-align:center; 
+  color: #113c55; 
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+/* ordered list */
+.howto ol { counter-reset: step; padding-left: 0; margin-left: 0; }
+
+/* each step card */
+.howto li {
+  list-style: none;
+  background: linear-gradient(90deg,#ffffff,#f6fbff);
+  margin: 10px 0;
+  padding: 14px 16px;
+  border-radius: 10px;
+  display: block;
+  border-left: 6px solid rgba(17,60,85,0.12);
+  box-shadow: 0 3px 12px rgba(12,24,40,0.04);
+}
+
+/* step number badge */
+.howto li:before{
+  counter-increment: step;
+  content: counter(step);
+  background: linear-gradient(135deg,#2b9eb3,#1f6f8b);
+  color: white;
+  font-weight: 700;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 12px;
+  margin-left: 2px;
+  box-shadow: 0 4px 10px rgba(31,70,90,0.15);
+}
+
+/* step title */
+.howto .title { font-weight: 700; color: #08323a; display:inline; font-size:16px; }
+
+/* reason text (smaller) */
+.howto .why { display:block; color:#475569; margin-top:6px; font-size:14px; }
+
+@media(max-width:600px) {
+  .howto li { padding: 12px; }
+  .howto h2 { font-size:18px; }
+}
+</style>
+
+<div class="howto">
+  <h2>How to use this DevOps Pipeline Visualizer — easy step-by-step</h2>
+  <ol>
+    <li><span class="title">Open the app link in your browser.</span>
+        <span class="why">Why: This opens the tool so you can use it (like opening a door to a room).</span></li>
+
+    <li><span class="title">Read the top title and short description.</span>
+        <span class="why">Why: It tells you what the tool does so you know if it helps you.</span></li>
+
+    <li><span class="title">Look at the left side (sidebar).</span>
+        <span class="why">Why: The sidebar has the controls you will use, like switches and boxes.</span></li>
+
+    <li><span class="title">If you have a public GitHub repo, type owner/repo in the box (optional).</span>
+        <span class="why">Why: This lets the app try to show real CI/CD runs from that repo (optional step).</span></li>
+
+    <li><span class="title">Toggle 'Force simulator' if you want a demo run.</span>
+        <span class="why">Why: Simulator runs a safe demo so the app always shows something even without a repo.</span></li>
+
+    <li><span class="title">Click 'Refresh / Fetch' to load data.</span>
+        <span class="why">Why: This asks the app to fetch recent workflow activity or prepare the demo history.</span></li>
+
+    <li><span class="title">Check 'Recent Workflow Runs' table.</span>
+        <span class="why">Why: It shows recent build or test runs — useful to see if things pass or fail.</span></li>
+
+    <li><span class="title">Look at the KPIs (Avg build time, Success rate).</span>
+        <span class="why">Why: These numbers quickly tell you if pipelines are healthy or slow.</span></li>
+
+    <li><span class="title">Click 'Simulate Build Log' to stream a build log.</span>
+        <span class="why">Why: It shows step-by-step messages (like watching a bread recipe being followed).</span></li>
+
+    <li><span class="title">Watch the log appear line by line.</span>
+        <span class="why">Why: This helps you understand what happens during each pipeline step.</span></li>
+
+    <li><span class="title">Check 'Artifacts' on the right for image names or sizes.</span>
+        <span class="why">Why: Artifacts are the packaged results — like a finished product in a box.</span></li>
+
+    <li><span class="title">See the 'Pipeline Timeline' chart.</span>
+        <span class="why">Why: This shows how long each stage (install, test, build) takes so you know where delays are.</span></li>
+
+    <li><span class="title">Explore the 'Kubernetes Cluster Map' graphic.</span>
+        <span class="why">Why: It shows components (nodes, pods, services) and how they connect — like rooms in a house map.</span></li>
+
+    <li><span class="title">Use 'Show Docker build + push commands' button to view commands.</span>
+        <span class="why">Why: These are the actual commands used to build and push a container image (like a recipe).</span></li>
+
+    <li><span class="title">Use 'Show kubectl deploy + rollout' to see deploy commands.</span>
+        <span class="why">Why: These commands show how the app would be started in a cluster (for advanced users or interviews).</span></li>
+
+    <li><span class="title">If you are showing this to a hiring manager, highlight the README files in the repo.</span>
+        <span class="why">Why: README explains your work and is what recruiters will read next.</span></li>
+
+    <li><span class="title">Click around slowly — read each message and chart.</span>
+        <span class="why">Why: The app is a demo; understanding the messages helps you explain it to others.</span></li>
+
+    <li><span class="title">If something looks like 'failure', take a screenshot.</span>
+        <span class="why">Why: Screenshots show problems and help you discuss fixes in interviews.</span></li>
+
+    <li><span class="title">Use the simulated sample if you do not have a repo.</span>
+        <span class="why">Why: The sample always shows a complete demo so recruiters can click and see results.</span></li>
+
+    <li><span class="title">Tell the interviewer what you did to create this app.</span>
+        <span class="why">Why: Employers want to know your steps — mention GitHub, Streamlit, Dockerfile, and K8s manifest.</span></li>
+
+    <li><span class="title">If showing to non-technical people, explain with simple analogies (e.g., 'pipeline = factory').</span>
+        <span class="why">Why: It helps people understand without technical words.</span></li>
+
+    <li><span class="title">If you want to demo locally, run the git repo and start Streamlit on your laptop.</span>
+        <span class="why">Why: Local run is faster for hands-on demos and you control the environment.</span></li>
+
+    <li><span class="title">If you are stuck, ask for help — use README or the contact line in the repo.</span>
+        <span class="why">Why: The repo includes instructions and contact info for questions.</span></li>
+
+    <li><span class="title">When finished, close the browser tab for privacy.</span>
+        <span class="why">Why: This prevents others from seeing your session and makes sure your data is private.</span></li>
+  </ol>
+</div>
+"""
+
+import streamlit as st
+st.markdown(usage_html, unsafe_allow_html=True)
